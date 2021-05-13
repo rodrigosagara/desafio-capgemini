@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'api/v1'], function(){
+    Route::get('limparbase', '\App\Modules\Cliente\Controllers\ClienteController@limparBase');
     Route::get('gerar-clientes', '\App\Modules\Cliente\Controllers\ClienteController@gerarClientes');
     Route::put('contas/{n_conta}/sacar', '\App\Modules\Conta\Controllers\ContaController@sacar');
     Route::put('contas/{n_conta}/depositar', '\App\Modules\Conta\Controllers\ContaController@depositar');

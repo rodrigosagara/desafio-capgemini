@@ -49,7 +49,7 @@ class ContaController extends Controller
                     'success'=>false,
                     'message'=>'O valor do saque não pode ser maior que o valor do saldo!',
                     'saldo_disponivel'=>$conta->saldo
-                ], 403);
+                ], 400);
             }
             return response()->json($conta, 200);
         } catch (\Excaption $e) {

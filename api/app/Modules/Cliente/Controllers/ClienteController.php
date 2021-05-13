@@ -35,8 +35,40 @@ class ClienteController extends Controller
      * Criar registros de clientes fake
      */
     public function gerarClientes(){
-        //$clientes = \factory(\App\Modules\Cliente\Models\Cliente::class)->create();
-        $clientesContas = \factory(\App\Modules\Conta\Models\Conta::class, 5)->create();
+        try {
+            //$clientes = \factory(\App\Modules\Cliente\Models\Cliente::class)->create();
+            $clientesContas = \factory(\App\Modules\Conta\Models\Conta::class, 5)->create();
+            return response()->json([
+                'success'=>true,
+                'message'=>'Clientes gerados com sucesso!'
+            ],200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Falha ao gerar registros',
+                'technicalMessage' => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    /**
+     * limpar base
+     */
+    public function limparBase(){
+        try {
+            Conta::truncate();
+            $this->model::truncate();
+            return response()->json([
+                'success'=>true,
+                'message'=>'Base de dados resetada. Gere novos clientes'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success'=>false,
+                'message'=>'Falha ao limpar a base de dados',
+                'technicalMessage'=>$e->getMessage()
+            ], 400);
+        }
     }
 
 }
