@@ -123,4 +123,11 @@ export default {
         margin-top: -70px !important;
         padding-bottom: 1px !important;
     }
+
+    @media(min-width: 320px){
+        #quadro{
+            margin-top: -25px !important;
+            padding-bottom: 1px !important;
+        }
+    }
 </style>
