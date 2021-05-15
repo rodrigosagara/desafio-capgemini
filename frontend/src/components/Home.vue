@@ -61,7 +61,7 @@ export default {
     mounted(){
         clientesService.listar().then(res => this.clientes = res.data, err => {
             this.mensageiroModel.setTitulo('Falha');
-            this.mensageiroModel.setMensagem(err),
+            this.mensageiroModel.setMensagem(err.response.data.message),
             this.mensageiroModel.setTipo('danger');
             $('#mdMensageiro').modal('show');
         });
@@ -79,7 +79,7 @@ export default {
                 $('#mdMensageiro').modal('show');
             }, err => {
                 this.mensageiroModel.setTitulo('Falha');
-                this.mensageiroModel.setMensagem(err),
+                this.mensageiroModel.setMensagem(err.response.data.message),
                 this.mensageiroModel.setTipo('danger');
                 this.listarClientes();
                 $('#mdMensageiro').modal('show');
@@ -94,7 +94,7 @@ export default {
                 $('#mdMensageiro').modal('show');
             }, err => {
                 this.mensageiroModel.setTitulo('Falha');
-                this.mensageiroModel.setMensagem(err),
+                this.mensageiroModel.setMensagem(err.response.data.message),
                 this.mensageiroModel.setTipo('danger');
                 $('#mdMensageiro').modal('show');
             });
@@ -108,7 +108,7 @@ export default {
                 $('#mdMensageiro').modal('show');
             }, err => {
                 this.mensageiroModel.setTitulo('Falha');
-                this.mensageiroModel.setMensagem(err),
+                this.mensageiroModel.setMensagem(err.response.data.message),
                 this.mensageiroModel.setTipo('danger');
                 $('#mdMensageiro').modal('show');
             });

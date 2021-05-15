@@ -158,7 +158,7 @@ export default {
                 $('#mdDepositar').modal('hide');
                 this.contaSelecionada = new ContaSelecionada();
                 this.mensageiroModel.setTitulo('Falha');
-                this.mensageiroModel.setMensagem(err);
+                this.mensageiroModel.setMensagem(err.response.data.message);
                 this.mensageiroModel.setTipo('danger');
                 this.$emit('recarregarClientes', this.mensageiroModel);
             });
@@ -179,7 +179,7 @@ export default {
                 $('#mdSacar').modal('hide');
                 this.contaSelecionada = new ContaSelecionada();
                 this.mensageiroModel.setTitulo('Falha');
-                this.mensageiroModel.setMensagem('Não é possivel sacar um valor acima do saldo');
+                this.mensageiroModel.setMensagem(err.response.data.message);
                 this.mensageiroModel.setTipo('danger');
                 this.$emit('recarregarClientes', this.mensageiroModel);
             });
